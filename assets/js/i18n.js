@@ -1,6 +1,6 @@
 (function () {
   var STORAGE_KEY = "site-lang";
-  var DEFAULT_LANG = "en";
+  var DEFAULT_LANG = "pt";
 
   function getLang() {
     return localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;

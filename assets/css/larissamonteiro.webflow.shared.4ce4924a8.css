@@ -5084,3 +5084,13 @@ figcaption {
   background-color: var(--black);
   color: var(--white);
 }
+
+@media screen and (max-width: 991px) {
+  [data-nav-menu-open].menu-nav{
+    display: flex !important;
+  }
+
+  .menu-nav .brand-logo-wrapper{
+    order: -1;
+  }
+}
