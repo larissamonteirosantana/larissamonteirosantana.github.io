@@ -24,7 +24,21 @@
     if (titleAttr) document.title = titleAttr;
   }
 
+  function fixNavCurrent() {
+    // Webflow's own runtime mis-highlights every nav link whose href ends in
+    // "index.html" whenever the page is loaded from a directory-style URL
+    // (e.g. "/about/" instead of "/about/index.html"), because its heuristic
+    // only checks that the URL ends in "/", not that the link actually
+    // points at the current page. The server-rendered aria-current="page"
+    // attribute is unaffected by that bug, so use it as the source of truth.
+    document.querySelectorAll(".floating-item").forEach(function (link) {
+      link.classList.toggle("w--current", link.getAttribute("aria-current") === "page");
+    });
+  }
+
   applyLang(getLang());
+  fixNavCurrent();
+  window.addEventListener("load", fixNavCurrent);
 
   document.querySelectorAll(".lang-btn").forEach(function (btn) {
     btn.addEventListener("click", function () {
