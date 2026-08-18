@@ -19,6 +19,9 @@
       btn.classList.toggle("is-active", btn.getAttribute("data-set-lang") === lang);
     });
     document.documentElement.setAttribute("data-lang-active", lang);
+
+    var titleAttr = document.documentElement.getAttribute("data-title-" + lang);
+    if (titleAttr) document.title = titleAttr;
   }
 
   applyLang(getLang());
